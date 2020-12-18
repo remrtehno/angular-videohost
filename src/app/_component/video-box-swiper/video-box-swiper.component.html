@@ -1,0 +1,34 @@
+<vg-player (onPlayerReady)="onPlayerReady($event)">
+    <div class="slider-text">
+        <div class="date">{{ toUp(getMonth | dataT) }} {{ getFullYear }}</div>
+        <div class="desc">{{ content.name }}</div>
+    </div>
+
+    <vg-overlay-play></vg-overlay-play>
+
+    <vg-buffering *ngIf="api.isAuthorized()"></vg-buffering>
+
+    <vg-scrub-bar *ngIf="api.isAuthorized()">
+        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+        <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+    </vg-scrub-bar>
+
+    <vg-controls *ngIf="api.isAuthorized()">
+        <vg-play-pause></vg-play-pause>
+
+        <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+
+        <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+
+        <vg-mute></vg-mute>
+        <vg-volume></vg-volume>
+
+        <vg-fullscreen></vg-fullscreen>
+    </vg-controls>
+
+    <video [vgMedia]="media" #media id="singleVideo"
+           [volume]="0"
+           [poster]="content.previews[0].file" preload="none">
+        <source [src]="content.file" type="video/mp4">
+    </video>
+</vg-player>

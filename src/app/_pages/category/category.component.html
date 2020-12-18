@@ -1,0 +1,40 @@
+<div class="block--header-category" [routerLink]="['/']">
+    <div class="block" style="cursor: pointer">
+        <img class="back" src="assets/img/back.png">
+        <h1 class="title">Голые и смешные</h1>
+    </div>
+</div>
+
+<div class="category-image">
+    <div class="category-text">{{title}}</div>
+    <div class="category-desc"></div>
+    <img class="category-img" src="assets/img/category/{{alias}}_b.jpg">
+</div>
+
+<div class="category-sections-video">
+    <div class="sections-video-nav">
+        <div class="nav-item" [ngClass]="{'active': activeLink == 'new'}" (click)="groupNew()">Новое</div>
+        <div class="nav-item" [ngClass]="{'active': activeLink == 'unwatched'}" (click)="groupUnwatched()">Не
+            просмотренное
+        </div>
+        <div class="nav-item" [ngClass]="{'active': activeLink == 'popular'}" (click)="groupPopular()">Популярное
+        </div>
+    </div>
+
+    <div class="more" (click)="prev()" *ngIf="step > 3">
+        Назад
+    </div>
+
+    <div *ngFor="let v of active" class="category-section-video">
+        <div class="s-title">{{v.name}}</div>
+        <app-video-box-category
+                (playEvent)="onPlay($event)"
+                [content]="v" class="video-item"></app-video-box-category>
+    </div>
+</div>
+
+<div class="more" (click)="next()" *ngIf="step <= maxSize()">
+    Получить ещё
+</div>
+
+<app-footer [raw]="texts"></app-footer>

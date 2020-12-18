@@ -1,0 +1,33 @@
+<div class="video-play">
+    <vg-player (onPlayerReady)="onPlayerReady($event)">
+        <div class="is-watched-index" *ngIf="content.viewed">Просмотрено</div>
+
+        <vg-overlay-play *ngIf="!api.isAuthorized()"></vg-overlay-play>
+
+        <vg-controls *ngIf="api.isAuthorized()">
+            <vg-play-pause></vg-play-pause>
+
+            <vg-mute></vg-mute>
+            <vg-volume></vg-volume>
+
+            <vg-fullscreen></vg-fullscreen>
+        </vg-controls>
+
+        <video [vgMedia]="media" #media id="singleVideo"
+               [volume]="0"
+               [poster]="content.previews[0].file" preload="none">
+            <source [src]="content.file" type="video/mp4">
+        </video>
+    </vg-player>
+</div>
+
+<div class="video-text">
+    <p>{{content.name}}</p>
+    <div class="mark">
+        <div class="like" (click)="like()" [ngClass]="{'active': content.liked}">{{content.likes}}</div>
+        <div class="look">{{content.views}}</div>
+    </div>
+</div>
+
+
+

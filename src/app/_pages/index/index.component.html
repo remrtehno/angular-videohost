@@ -1,0 +1,61 @@
+<div class="block--header">
+    <div class="block">
+        <img class="smile" src="assets/img/smile.png">
+        <h1 class="title">Голые и <br><span>смешные</span></h1>
+    </div>
+
+    <div class="block__text">
+        Видео месяца
+    </div>
+</div>
+
+<div class="block--slider">
+    <div #swiper class="swiper-container">
+        <div class="swiper-wrapper re">
+
+            <app-video-box-swiper
+                    *ngFor="let c of top; let i = index"
+                    (playEvent)="onPlay($event)"
+                    [content]="c"
+                    [i]="i"
+                    class="swiper-slide"></app-video-box-swiper>
+
+        </div>
+
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>
+
+<div class="sections">
+    <div class="block__text">
+        Категории
+    </div>
+
+    <div class="sections-list" *ngFor="let c of categories">
+        <div class="section" [routerLink]="['/category/'+c[0].alias]">
+            <img class="section-img" src="assets/img/category/{{c[0].alias}}.jpg">
+            <div class="section-href">{{c[0].name}}</div>
+        </div>
+
+        <div class="section" [routerLink]="['/category/'+c[1].alias]">
+            <img class="section-img" src="assets/img/category/{{c[1].alias}}.jpg">
+            <div class="section-href">{{c[1].name}}</div>
+        </div>
+    </div>
+</div>
+
+<div class="sections-video">
+    <div class="sections-video-nav">
+        <div class="nav-item" [ngClass]="{'active': activeLink == 'new'}" (click)="groupNew()">Новое</div>
+        <div class="nav-item" [ngClass]="{'active': activeLink == 'unwatched'}" (click)="groupUnwatched()">Не
+            просмотренное
+        </div>
+        <div class="nav-item" [ngClass]="{'active': activeLink == 'popular'}" (click)="groupPopular()">Популярное</div>
+    </div>
+
+    <app-video-box (likeEvent)="onLike($event)" (playEvent)="onPlay($event)" [content]="v" *ngFor="let v of active"></app-video-box>
+</div>
+
+<app-footer [raw]="texts"></app-footer>
+

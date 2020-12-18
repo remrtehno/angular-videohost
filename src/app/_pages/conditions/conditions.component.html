@@ -1,0 +1,14 @@
+<div class="block--header" style="margin-bottom: 44px" [routerLink]="['/']">
+    <div class="block">
+        <img class="smile" src="../assets/img/smile.png">
+        <h1 class="title">Голые и <br><span>смешные</span></h1>
+    </div>
+</div>
+
+<div class="block">
+    <div class="block__wrapper" [innerHTML]="conditions">
+
+    </div>
+</div>
+
+<app-footer [raw]="texts"></app-footer>

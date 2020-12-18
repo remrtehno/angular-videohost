@@ -1,0 +1,47 @@
+{
+  "/naked/bapi": {
+    "target": "http://vps3217.mtu.immo:8774",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/naked/bapi": ""
+    }
+  },
+  "/api": {
+    "target": "http://vps3217.mtu.immo:9009",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  },
+  "/auth": {
+    "target": "http://vps3217.mtu.immo:9008",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/auth": ""
+    }
+  },
+  "/naked/text": {
+    "target": "http://vps2085.mtu.immo:9003",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/naked/text": ""
+    }
+  },
+  "/storage/*": {
+    "target": "http://vps3217.mtu.immo:9200",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/storage": ""
+    }
+  }
+}

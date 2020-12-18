@@ -1,0 +1,22 @@
+<div class="block--header" style="margin-bottom: 44px" [routerLink]="['/']">
+    <div class="block">
+        <img class="smile" src="../assets/img/smile.png">
+        <h1 class="title">Голые и <br><span>смешные</span></h1>
+    </div>
+</div>
+
+<div class="container content">
+    <section [innerHTML]="text"></section>
+    <div style="text-align:center;">
+        <br>
+        <div style="font-size:28px;display:inline-block;text-transform:uppercase;background:#b9b9b9;padding:8px 4%;"><a [routerLink]="['/']" style="color:#000;text-decoration:none;">Смотреть видео</a></div>
+        <br>
+        <br>
+        <div style="font-size:16px">
+            <a [routerLink]="['/conditions']">Пользовательское соглашение</a>
+        </div>
+        <div style="font-size:17px">
+            <a href="javascript:void(0)" onclick="history.go(-2);">Назад</a>
+        </div>
+    </div>
+</div>
